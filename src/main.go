@@ -4,65 +4,30 @@ import "fmt"
 
 func main() {
 
-	// Area de un cuadrado
-	const baseCuadrado = 10
-	areaCuadrado := baseCuadrado * baseCuadrado
-	fmt.Println("Area Cuadrado:", areaCuadrado)
+	// doc https://pkg.go.dev/fmt
 
-	x := 10
-	y := 50
+	helloMessage := "Hello"
+	worldMessage := "world"
 
-	//Suma
-	result := x + y
-	fmt.Println("Suma:", result)
+	// Println -> imprime en 1 linea
+	fmt.Println(helloMessage, worldMessage)
+	fmt.Println(helloMessage, worldMessage)
 
-	//Resta
-	result = y - x // se coloca = puesto uqe ya fue ini
-	fmt.Println("Resta:", result)
+	//Printf
+	nombre := "Platzi"
+	cursos := 500
+	// %s string
+	// %d int
+	// %v si no se sabe los tipos de datos
+	fmt.Printf("%s tiene mas de %d cursos \n", nombre, cursos) // Platzi tiene mas de 500 cursos
+	fmt.Printf("%v tiene mas de %v cursos \n", nombre, cursos) // Platzi tiene mas de 500 cursos
 
-	//Multiplicación
-	result = x * y
-	fmt.Println("Multiplicación:", result)
+	//Sprintf
+	// todo lo generado se devuelve a message
+	message := fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
+	fmt.Println(message)
 
-	//Division
-	result = y / x
-	fmt.Println("Division:", result)
-
-	//Modulo
-	result = y % x
-	fmt.Println("Modulo: ", result)
-
-	//Incremental
-	x++
-	fmt.Println("Incremental: ", x)
-
-	//Decremental
-	x--
-	fmt.Println("Decremental: ", x)
-
-	// Reto Calculo de area de:
-	// Rectangulo, Trapecio y Circulo
-
-	// Variables
-	x = 2
-	y = 3
-
-	// Rectangulo
-	AreaRectangulo := x * y
-	fmt.Println("Area de rectangulo:", AreaRectangulo)
-
-	// Trapecio
-	const a float64 = 2
-	const b float64 = 3
-	const h float64 = 3
-
-	AreaTrapecio := h * ((a + b) / 2)
-	fmt.Println("Area de trapecio:", AreaTrapecio)
-
-	// Circulo
-	const pi float64 = 3.1415
-	const radio = 2
-
-	AreaCirculo := radio * pi
-	fmt.Println("Area de circulo:", AreaCirculo)
+	//Tipo de dato
+	fmt.Printf("helloMessage: %T \n", helloMessage) //helloMessage: string
+	fmt.Printf("Cursos: %T\n", cursos)              // Cursos: int
 }
