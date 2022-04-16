@@ -3,22 +3,44 @@ package main
 import "fmt"
 
 func main() {
-	// Crear Slicen
-	// numeros := make([]int, 0, 3)                     // Slicen vacio de longitud 0 y capacidad 3
-	// fmt.Println(numeros, len(numeros), cap(numeros)) // [] 0 3
 
-	// numeros[0] = 100 // ERROR
-	// numeros[1] = 200 // ERROR
-	// numeros[2] = 300 // ERROR
+	// mapa -> diccionarios -> uso de clave y valor
+	dias := make(map[int]string)
+	fmt.Println(dias) // map[]
 
-	// Se debe modificar la longitud
-	numeros := make([]int, 3, 3) // Slicen vacio de longitud 0 y capacidad 3
+	// Agregar Datos
+	dias[1] = "Domingo"
+	dias[2] = "Lunes"
+	dias[3] = "Martes"
+	dias[4] = "Miercoles"
+	dias[5] = "Jueves"
+	dias[6] = "Viernes"
+	dias[7] = "Sabado"
 
-	numeros[0] = 100
-	numeros[1] = 200
-	numeros[2] = 300
+	fmt.Println(dias) // map[1:Domingo 2:Lunes 3:Martes 4:Miercoles 5:Jueves 6:Viernes 7:Sabado]
 
-	numeros = append(numeros, 400)
+	dias[100] = "test"
+	fmt.Println(dias) // map[1:Domingo 2:Lunes 3:Martes 4:Miercoles 5:Jueves 6:Viernes 7:Sabado 100:test]
 
-	fmt.Println(numeros, len(numeros), cap(numeros)) // [100 200 300 400] 4 6
+	// Modificacion
+	dias[7] = "SABADO"
+	fmt.Println(dias) // map[1:Domingo 2:Lunes 3:Martes 4:Miercoles 5:Jueves 6:Viernes 7:SABADO 100:test]
+
+	// Eliminar
+	delete(dias, 100)
+	fmt.Println(dias) // map[1:Domingo 2:Lunes 3:Martes 4:Miercoles 5:Jueves 6:Viernes 7:SABADO]
+
+	fmt.Println(dias, len(dias)) // map[1:Domingo 2:Lunes 3:Martes 4:Miercoles 5:Jueves 6:Viernes 7:SABADO] 7
+
+	// MAPAS COMPLEJOS
+	estudiantes := make(map[string][]int) // clave string y valor arreglo de int
+
+	estudiantes["Mauri"] = []int{13, 15, 16}
+	estudiantes["Daysi"] = []int{14, 17, 18}
+
+	fmt.Println(estudiantes) // map[Daysi:[14 17 18] Mauri:[13 15 16]]
+
+	// Acceder a un elemento
+	fmt.Println(estudiantes["Mauri"])    // [13 15 16]
+	fmt.Println(estudiantes["Mauri"][1]) // 15
 }
