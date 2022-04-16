@@ -3,30 +3,22 @@ package main
 import "fmt"
 
 func main() {
-	// Slicen
-	numeros := []int{1, 2, 3}          // no se colocan la cantidad de elementos, son objetos mutables
-	fmt.Println(numeros, len(numeros)) // [1 2 3] 3
+	// Crear Slicen
+	// numeros := make([]int, 0, 3)                     // Slicen vacio de longitud 0 y capacidad 3
+	// fmt.Println(numeros, len(numeros), cap(numeros)) // [] 0 3
 
-	// Agregar elementos
-	numeros = append(numeros, 4)       // agregar 4 a numeros
-	numeros = append(numeros, 5)       // agregar 5 a numeros
-	fmt.Println(numeros, len(numeros)) // [1 2 3 4 5] 5
+	// numeros[0] = 100 // ERROR
+	// numeros[1] = 200 // ERROR
+	// numeros[2] = 300 // ERROR
 
-	//Sub Slice
-	subSlicen := numeros[:2] // desde indice 0 hasta indice 2
-	numeros[0] = 100         // modifica posicion 0
+	// Se debe modificar la longitud
+	numeros := make([]int, 3, 3) // Slicen vacio de longitud 0 y capacidad 3
 
-	// si se modifica el original se modificara los subSlice, ya que un Slicen maneja referencias
-	fmt.Println(subSlicen) // [100 2]
-	fmt.Println(numeros)   // [100 2 3 4 5]
+	numeros[0] = 100
+	numeros[1] = 200
+	numeros[2] = 300
 
-	//Punteros
-	//Longitud
-	//Capacidad
+	numeros = append(numeros, 400)
 
-	meses := []string{"Enero", "Febrero", "Marzo"}
-	fmt.Printf("Len: %v, Cap: %v, %p \n", len(meses), cap(meses), meses) // Len: 3, Cap: 3, 0xc000076480
-
-	meses = append(meses, "Abril")                                       // se agrega un nuevo Slicen cada vez que se agrega un elemento nuevo
-	fmt.Printf("Len: %v, Cap: %v, %p \n", len(meses), cap(meses), meses) // Len: 4, Cap: 6, 0xc0000220c0
+	fmt.Println(numeros, len(numeros), cap(numeros)) // [100 200 300 400] 4 6
 }
