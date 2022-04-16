@@ -3,37 +3,30 @@ package main
 import "fmt"
 
 func main() {
-	var numeros [5]int   // crear un array de 5 posiciones con 0
-	fmt.Println(numeros) // [0 0 0 0 0]
+	// Slicen
+	numeros := []int{1, 2, 3}          // no se colocan la cantidad de elementos, son objetos mutables
+	fmt.Println(numeros, len(numeros)) // [1 2 3] 3
 
-	numeros[0] = 10
-	numeros[1] = 20
-	fmt.Println(numeros) // [10 20 0 0 0]
+	// Agregar elementos
+	numeros = append(numeros, 4)       // agregar 4 a numeros
+	numeros = append(numeros, 5)       // agregar 5 a numeros
+	fmt.Println(numeros, len(numeros)) // [1 2 3 4 5] 5
 
-	//Arrays con valores
-	nombres := [3]string{"Mauri", "Daysi", "Jessie"}
-	fmt.Println(nombres) // [Mauri Daysi Jessie]
+	//Sub Slice
+	subSlicen := numeros[:2] // desde indice 0 hasta indice 2
+	numeros[0] = 100         // modifica posicion 0
 
-	// Arreglos sin longitud exacta, pero no se puede agregar mas elementos
-	colores := [...]string{
-		"rojo",
-		"negro",
-		"azul",
-	}
-	// len() para longitud
-	fmt.Println(colores, len(colores)) // [rojo negro azul] 3
+	// si se modifica el original se modificara los subSlice, ya que un Slicen maneja referencias
+	fmt.Println(subSlicen) // [100 2]
+	fmt.Println(numeros)   // [100 2 3 4 5]
 
-	// Indice definido
-	monedas := [...]string{
-		0: "Dolar",
-		3: "Soles",
-		5: "Pesos",
-	}
-	fmt.Println(monedas, len(monedas)) // [Dolar   Soles  Pesos] 6
-	// Se agregan caracteres vacios a los indices que no se definen
+	//Punteros
+	//Longitud
+	//Capacidad
 
-	// Sub Array
-	subMoneda := monedas[0:3]              // va desde 0 al indice 2
-	fmt.Println(subMoneda, len(subMoneda)) // [Dolar  ] 3
+	meses := []string{"Enero", "Febrero", "Marzo"}
+	fmt.Printf("Len: %v, Cap: %v, %p \n", len(meses), cap(meses), meses) // Len: 3, Cap: 3, 0xc000076480
 
+	meses = append(meses, "Abril")                                       // se agrega un nuevo Slicen cada vez que se agrega un elemento nuevo
+	fmt.Printf("Len: %v, Cap: %v, %p \n", len(meses), cap(meses), meses) // Len: 4, Cap: 6, 0xc0000220c0
 }
